@@ -255,6 +255,93 @@
     .right {
         width: 200px;
         height: 450px;
-        background: lightcoral;
+        // background: lightcoral;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-right: 1px solid #ddd;
+        section {
+            width: 200px;
+            height: 118px;
+            p {
+                height: 31px;
+                width: 63px;
+                color: #0d8700;
+                border-bottom: 2px solid #2d8800;
+                padding-left: 5px;
+            }
+            ul {
+                width: 200px;
+                height: 77px;
+                padding: 10px 16px 6px;
+                li {
+                    line-height: 21px;
+                    padding-left: 20px;
+                }
+            }
+        }
+        .lead {
+            height: 184px;
+            width: 200px;
+            // background-color: lemonchiffon;
+            ul {
+                border-top: 1px solid #ddd;
+                li {
+                    float: left;
+                    border-bottom: 1px dotted #ddd;
+                    border-right: 1px dotted #ddd;
+                    img {
+                        width: 65.6px;
+                        height: 60px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#feature {
+    width: 1210px;
+    height: 466px;
+    // background-color: lemonchiffon;
+    margin-top: 35px;
+    h2 {
+        height: 46px;
+        widows: 100%;
+        // background-color: lightblue;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        font-size: 16px;
+        img {
+            width: 216px;
+            height: 18px;
+            margin-left: 20px;
+        }
+    }
+    >div>div {
+        float: left;
+    }
+    .left {
+        width: 240px;
+        height: 420px;
+    }
+    .midel {
+        width: 485px;
+        height: 420px;
+    }
+    .right {
+        width: 485px;
+        height: 420px;
+    }
+    a {
+        float: left;
+        img {
+            margin: 0;
+        }
+    }
+    .last {
+        width: 1210px;
+        height: 110px;
     }
 }
