@@ -1,6 +1,7 @@
     @charset "utf-8";
     @import'./common.scss';
     @import'./header.scss';
+    @import'./footer.scss';
     #advertising {
         img {
             width: 100%;
@@ -652,6 +653,48 @@
             }
             >div {
                 border-top: 1px solid #ffc4ca;
+            }
+        }
+    }
+    
+    #finally {
+        height: 730px;
+        // background: lemonchiffon;
+        margin-top: 50px;
+        border-top: 2px solid #3ea000;
+        >ul {
+            display: flex;
+            justify-content: left;
+            flex-wrap: wrap;
+            border-left: 1px solid #ccc;
+            >li {
+                width: 241.8px;
+                height: 365px;
+                border-bottom: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+                display: flex;
+                flex-direction: column;
+                justify-content: left;
+                align-items: center;
+                .name {
+                    line-height: 80px;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+                >ul {
+                    width: 242px;
+                    padding-left: 30px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    margin-top: 20px;
+                    li {
+                        width: 100px;
+                        line-height: 25px;
+                        color: #606060;
+                    }
+                }
             }
         }
     }
