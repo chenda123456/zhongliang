@@ -1,2 +1,138 @@
 @charset "utf-8";
 @import'./common.scss';
+@import'./footer.scss';
+header {
+    width: 1210px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 2px solid #2d8800;
+}
+
+main {
+    background-color: #f9f9f9;
+    #login {
+        width: 350px;
+        margin: 0px auto;
+        padding: 50px 20px 100px;
+        text-align: center;
+        h1 {
+            font-size: 20px;
+            text-align: center;
+            padding-bottom: 30px;
+        }
+        .false {
+            display: block;
+            text-align: left;
+            color: #eb0028;
+            font-size: 12px;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .item {
+            margin-bottom: 10px;
+            position: relative;
+            input {
+                border: 1px solid rgba(0, 0, 0, .1);
+                width: 100%;
+                height: 40px;
+                padding: 8px 16px;
+                cursor: pointer;
+                font-size: 16px;
+                line-height: 24px;
+                background-color: #fff;
+                outline: none;
+                &:hover {
+                    border: 1px solid rgba(0, 0, 0, .4);
+                }
+                &:focus {
+                    border: 1px solid rgba(0, 0, 0, .4);
+                }
+            }
+            .submit {
+                width: 100%;
+                height: 40px;
+                color: #fff;
+                background-color: transparent;
+                outline: none;
+                border: none;
+                cursor: pointer;
+                position: relative;
+                z-index: 10;
+            }
+        }
+        .submit-box {
+            position: relative;
+            background-color: #eb0028;
+            z-index: 1;
+            margin-top: 20px;
+            span {
+                display: block;
+                position: absolute;
+                background-color: #B8001F;
+                width: 0;
+                height: 40px;
+                top: 0px;
+                left: 0px;
+                transition: all 0.25s;
+            }
+            &:hover span {
+                width: 100%;
+            }
+            &:hover .submit {
+                background-color: transparent
+            }
+        }
+        .style {
+            margin-top: 40px;
+            a {
+                display: inline;
+                color: #0099cc;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            i {
+                width: 1px;
+                height: 14px;
+                display: inline-block;
+                margin: 0 14px;
+                background-color: #dfdfdf
+            }
+        }
+        .others {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-top: 40px;
+            padding: 0 10px;
+            position: relative;
+            &::before,
+            &::after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                top: 8px;
+                width: 100px;
+                height: 1px;
+                background-color: silver;
+            }
+            &::before {
+                left: 0;
+            }
+            &::after {
+                right: 0;
+            }
+        }
+        .others-icon {
+            margin-top: 20px;
+            a {
+                display: inline-block;
+                font-size: 40px;
+                margin: 0 15px;
+            }
+        }
+    }
+}

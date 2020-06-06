@@ -9,7 +9,62 @@
 </head>
 
 <body>
+    <header>
+        <img src="./img/logo.png" alt="">
+        <img src="./img/twoweima.jpg" alt="">
+    </header>
+    <main id="mian">
+        <div id="login">
+            <h1>登录</h1>
+            <i class="false">用户名或密码错误</i>
+            <!-- 手机号 -->
+            <div class="item username">
+                <input type="text" placeholder="手机／邮箱／用户名" name="phone" id="phone">
+            </div>
+            <!-- 密码 -->
+            <div class="item password">
+                <input type="password" name="password" placeholder="密码" id="password">
+            </div>
+            <!-- <div class="item">滑块验证</div> -->
+
+            <!-- 登陆按钮 -->
+            <div class="item submit-box">
+                <button type="submit" class="submit">确定</button>
+                <span></span>
+            </div>
+            <!-- 其他操作 -->
+            <p class="style">
+                <a href="javascript:;">手机短信登录</a>
+                <i></i>
+                <a href="./registry.html">注册</a>
+                <i></i>
+                <a href="javascript:;">忘记密码</a>
+            </p>
+            <!-- 其他登录方式 -->
+            <span class="others">选择其他方式登录</span>
+            <!-- 图标 -->
+            <div class="others-icon">
+                <a href="javascript:;">
+                    <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-weibo2"></use>
+                            </svg>
+                </a>
+                <a href="javascript:;">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-QQ"></use>
+                    </svg>
+                </a>
+                <a href="javascript:;">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weixindenglu"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./script/login.js"></script>
 </body>
 
 </html>

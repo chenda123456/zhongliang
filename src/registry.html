@@ -1,11 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/registry.css">
 </head>
+
 <body>
-    
+    <header>
+        <img src="./img/logo.png" alt="">
+        <img src="./img/twoweima.jpg" alt="">
+    </header>
+    <main id="main">
+        <div id="reg">
+            <h1>注册</h1>
+            <!-- 账户已存在弹窗 -->
+            <i class="hasname">账户已存在</i>
+            <!-- 手机号 -->
+            <div class="item username">
+                <input type="text" placeholder="手机号" name="phone" id="phone">
+                <label for="username">+86</label>
+                <div class="u-rule">
+                    <span>请输入11位手机号码</span>
+                </div>
+            </div>
+            <!-- 密码 -->
+            <div class="item password">
+                <input type="password" name="password" placeholder="密码" id="password">
+                <!-- 正则弹窗 -->
+                <div class="p-rule">
+                    <span><i></i>6 ～16 位字符</span>
+                    <span><i></i>包含字母</span>
+                    <span><i></i>包含数字</span>
+                </div>
+            </div>
+            <!-- <div class="item">滑块验证</div> -->
+            <div class="agree">
+                <input type="checkbox" name="agree" id=""> 我同意
+                <a href="">《用户服务协议》</a> 和
+                <a href="">《我买网隐私协议》</a>
+            </div>
+
+            <div class="item submit-box">
+                <button type="submit" class="submit" disabled='disabled'>创建账号</button>
+                <span></span>
+            </div>
+
+            <div class="login">
+                <a href="./login.html">登录</a>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./script/registry.js"></script>
 </body>
+
 </html>

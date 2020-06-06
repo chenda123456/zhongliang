@@ -489,10 +489,13 @@
                                 .price {
                                     width: 200px;
                                     height: 20px;
-                                    font-size: 20px;
                                     line-height: 26px;
                                     color: #dd0800;
                                     margin-bottom: 10px;
+                                    font-size: 14px;
+                                    span {
+                                        font-size: 20px;
+                                    }
                                 }
                             }
                         }
