@@ -87,7 +87,12 @@ gulp.task('uglifyimg', () => {
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img'))
 });
-
+//8.压缩plujins文件 - 引入插件包
+gulp.task('plujins', () => {
+    return gulp.src('src/thirdplugins/*.js')
+        .pipe(script())
+        .pipe(gulp.dest('dist/thirdplugins'));
+});
 //8.监听
 // 监听插件-gulp-watch()
 // 参1:监听的目录，数组的形式
@@ -100,5 +105,5 @@ gulp.task('uglifyimg', () => {
 
 
 gulp.task('default', () => {
-    watch(['src/*.html', 'src/sass/*.scss', 'src/script/*.js', "src/img/*.{jpg,png,gif}"], gulp.parallel('uglifyhtml', 'compilesass', 'uglifyjs', 'uglifyimg'));
+    watch(['src/*.html', 'src/sass/*.scss', 'src/script/*.js', "src/img/*.{jpg,png,gif}", "src/thirdplugins/*.js"], gulp.parallel('uglifyhtml', 'compilesass', 'uglifyjs', 'uglifyimg', 'plujins'));
 });
