@@ -121,8 +121,9 @@ header {
             width: 100px;
             display: flex;
             flex-direction: column;
-            a {
-                margin-top: 5px;
+            i {
+                margin-top: 8px;
+                cursor: pointer;
             }
         }
         div {

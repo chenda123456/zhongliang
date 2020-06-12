@@ -1,12 +1,8 @@
 ! function($) {
     const footer = $('footer');
     footer.load('./footer.html');
-
-    const $title = $('.title div');
-    const $url = $('.title img');
-    const $price = $('.price span')
-    const $number = $('.number input')
-    let n = 0;
+    const $allcheck = $('.left input')
+    let num = 0;
     let $zongjia = 0;
     let price = 0;
     $.ajax({
@@ -15,7 +11,6 @@
     }).done(function(data) {
 
         let $strhtml = '';
-        // let $zongjia = 0;
         $.each(data, function(index, val) {
 
             $strhtml += `
@@ -39,50 +34,61 @@
             <span>${(val.price*val.buynum).toFixed(2)}</span>
             </div>
             <div class="caozuo">
-                <a href="" class="collect">收藏</a>
-                <a href="" class="delete">删除</a>
+                <i class="li_collect">收藏</i>
+                <i class="li_delete">删除</i>
             </div>
             </li>
                 `;
 
+
         });
         $('#main ul').html($strhtml)
 
+        // numInput.eq(index).on('input', function () {
+        //     if (numReg.test(+$(this).val())) {
+        //         arrNum = [];    
+        //         let buynum = $(this).val();
+        //         let sid = $(this).parent().parent().parent().prop('id');
+        //         $(this).parent().parent().parent().find('.thePrice').html(`￥${parseFloat(buynum * +$(this).parent().parent().parent().find('.aPrice').html().substring(1)).toFixed(2)}`);
+        //         upData(sid, buynum);
+        //         allPrice();
+        //         storeNumm();console.log(arrNum);
+        //     }else{
+        //         console.log(2);
+
+        //         $(this).val(arrNum[index]); 
+        //     }
+        // });
 
         $('.check').on('click', function() {
             let flag = true;
-            n = 0;
+
             $.each($('.check'), function(index, val) {
 
                 if (!$(val).prop('checked')) {
                     flag = false;
 
-                } else {
-                    n++;
-                    // console.log($(this).parent().parent().find('.xiaoji span').text());
-
                 }
-                $('.checknum').text(n);
-            })
+            });
             if (!$(this).prop('checked')) {
                 $zongjia -= +$(this).parent().parent().find('.xiaoji span').text();
             } else {
-                // console.log($(this).parent().parent().find('.xiaoji span').text());
                 $zongjia += +$(this).parent().parent().find('.xiaoji span').text();
             }
-            // console.log($zongjia);
             $('.zongjia').text($zongjia.toFixed(2));
             if (flag) {
-                $('.left input').prop('checked', flag)
+                $allcheck.prop('checked', flag)
             } else {
-                $('.left input').prop('checked', flag)
+                $allcheck.prop('checked', flag)
             }
-
+            allPrice()
+            count();
         });
         $('.number input').change(function() {
             $(this).parent().parent().find('.xiaoji span').html(($(this).parent().parent().find('.number input').val() * $(this).parent().parent().find('.price span').html()).toFixed(2));
             ajax1($(this).parent().parent().attr('sid'), $(this).val());
-            allPrice()
+            allPrice();
+            count();
         })
         $('.jian').on('click', function() {
             console.log($zongjia);
@@ -97,18 +103,8 @@
 
             ajax1($(this).parent().parent().attr('sid'), i);
 
-            // if ($(this).parent().parent().find('.title input').prop('checked')) {
-            //     if (i == 1) {
-            //         $zongjia = +$('.zongjia').text();
-            //     } else {
-            //         $zongjia -= +$(this).parent().parent().find('.price span').text();
-            //     }
-            // }
-
-            // console.log($zongjia);
-
-            // $('.zongjia').text($zongjia.toFixed(2));
-            allPrice()
+            allPrice();
+            count();
         });
         $('.jia').on('click', function() {
             let i = $(this).parent().find('input').val();
@@ -116,25 +112,76 @@
             $(this).parent().find('input').val(i);
             $(this).parent().parent().find('.xiaoji span').html((i * $(this).parent().parent().find('.price span').html()).toFixed(2));
             ajax1($(this).parent().parent().attr('sid'), i);
-            // console.log($(this).parent().parent().find('.title input').prop('checked'));
 
-            // if ($(this).parent().parent().find('.title input').prop('checked')) {
-            //     console.log($(this).parent().parent().find('.price span').text());
-
-            //     $zongjia += +$(this).parent().parent().find('.price span').text();
-            // } else {
-            //     console.log(1);
-
-            // }
-            // console.log($zongjia);
-
-            // $('.zongjia').text($zongjia.toFixed(2));
-            allPrice()
+            allPrice();
+            count()
         });
+        $('.li_delete').on('click', function() {
+            console.log(1);
+            if (confirm('确定要全部删除吗')) {
+                let id = $(this).parent().parent().attr('sid')
+                $.ajax({
+                    url: 'http://10.31.162.90/project/zhongliang/php/deleteCartList.php',
+                    data: {
+                        sid: id,
+                    },
+                }).done(function() {
 
+                })
+                $(this).each(function() {
+                    $(this).parent().parent().remove('.list')
+                })
+            }
+            allPrice();
+            count()
+        })
 
+        $allcheck.click();
 
     });
+
+    $allcheck.on('click', function() {
+        $.each($('.check'), function(index, val) {
+            console.log($('.left input').prop('checked'));
+            $(val).prop('checked', $allcheck.prop('checked'));
+            if ($allcheck.prop('checked')) {
+                $zongjia += +$(this).parent().parent().find('.xiaoji span').text();
+            }
+        })
+        console.log($zongjia);
+        $('.zongjia').text($zongjia.toFixed(2));
+        allPrice();
+        count();
+
+    });
+    $('.delete').on('click', function() {
+        if (confirm('确定要全部删除吗')) {
+            $.each($('.list'), function(index, val) {
+                console.log(val);
+                console.log($(val).find('.check'));
+
+                console.log($(val).find('.check').prop('checked'));
+                if ($(val).find('.check').prop('checked')) {
+                    console.log($(val).attr('sid'));
+                    let id = $(val).attr('sid');
+                    $.ajax({
+                        url: 'http://10.31.162.90/project/zhongliang/php/deleteCartList.php',
+                        data: {
+                            sid: id,
+                        },
+                    }).done(function() {
+
+                    })
+                    $(this).remove('.list');
+                }
+
+            })
+        };
+
+        allPrice();
+        count();
+
+    })
 
     function ajax1(sid, num) {
         $.ajax({
@@ -143,34 +190,11 @@
                 sid: sid,
                 buynum: num,
             },
-        }).done(function() {
-            // console.log(1);
-        })
+        }).done(function() {})
     }
-    $('.left input').on('click', function() {
-            n = 0
-                // let $zongjia = 0
-                // console.log($(this).prop('checked'));
-            $.each($('.check'), function(index, val) {
-                console.log($('.left input').prop('checked'));
-                // console.log($(val).prop('checked'));
-                $(val).prop('checked', $('.left input').prop('checked'));
-                if ($('.left input').prop('checked')) {
-                    n++;
-                    $zongjia += +$(this).parent().parent().find('.xiaoji span').text();
-                }
-            })
-            console.log($zongjia);
-
-            console.log(n);
-            $('.checknum').text(n);
-            $('.zongjia').text($zongjia.toFixed(2));
-
-        })
-        // console.log(n);
 
     function allPrice() {
-        const thePrice = $('.xiaoji span'); //单款总价
+        const thePrice = $('.xiaoji span');
         price = 0;
         thePrice.each(function() {
             if ($(this).parent().parent().find('.title input').prop('checked')) {
@@ -178,6 +202,17 @@
             }
         });
         $('.zongjia').text(price.toFixed(2));
+    }
+
+    function count() {
+        const theCount = $('.number input');
+        num = 0;
+        theCount.each(function() {
+            if ($(this).parent().parent().find('.title input').prop('checked')) {
+                num += +parseFloat($(this).val());
+            }
+        })
+        $('.checknum').text(num);
     }
 
 

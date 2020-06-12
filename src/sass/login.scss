@@ -24,12 +24,33 @@ main {
             padding-bottom: 30px;
         }
         .false {
-            display: block;
             text-align: left;
             color: #eb0028;
             font-size: 12px;
             margin-bottom: 10px;
             display: none;
+        }
+        .username {
+            display: flex;
+            position: relative;
+            span {
+                position: absolute;
+                width: 150px;
+                height: 20px;
+                top: 10px;
+                left: 315px;
+            }
+        }
+        .password {
+            display: flex;
+            position: relative;
+            span {
+                position: absolute;
+                width: 150px;
+                height: 20px;
+                top: 10px;
+                left: 315px;
+            }
         }
         .item {
             margin-bottom: 10px;

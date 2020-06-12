@@ -32,7 +32,12 @@ main {
             display: none;
         }
         .username {
+            position: relative;
             .u-rule {
+                width: 200px;
+                position: absolute;
+                left: 310px;
+                top: 5px;
                 padding-top: 5px;
                 text-align: left;
                 display: none;
@@ -70,9 +75,19 @@ main {
         }
         .password {
             .p-rule {
+                width: 200px;
+                position: absolute;
+                left: 320px;
+                top: 0px;
+                text-align: left;
                 display: none;
                 text-align: left;
-                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                .qiang {
+                    width: 50px;
+                    height: 20px;
+                }
                 span {
                     text-indent: 10px;
                     display: block;
@@ -149,21 +164,6 @@ main {
             }
             &:hover .submit {
                 background-color: transparent
-            }
-        }
-        .agree {
-            line-height: 1.4rem;
-            margin: 40px 0 20px 0;
-            color: #666;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            input {
-                margin-right: 5px;
-            }
-            a {
-                display: inline;
-                color: #0099cc;
             }
         }
         .login {

@@ -98,7 +98,7 @@
 
     });
 
-    $('.cart p').on('click', function() {
+    $('.cart').on('click', function() {
         console.log($smallpic.attr('src'));
         console.log($title.html());
         console.log(+$price.html());
